@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Blast Jr. - Fun Puzzle Game for Kids</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Start Screen -->
+    <div id="startScreen" class="screen active">
+        <div class="start-container">
+            <h1 class="game-title">
+                <span class="title-part">🧩 Block Blast Jr.</span>
+                <span class="title-part casino-glow">🌟</span>
+            </h1>
+            <p class="subtitle casino-text">Super Fun Puzzles for Kids!</p>
+            <button id="startBtn" class="start-button casino-button">
+                🚀 Start Playing! 🎮
+            </button>
+            <button id="parentBtn" class="parent-button">Parent Dashboard</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="screen">
+        <!-- Header -->
+        <div class="game-header">
+            <div class="header-content">
+                <h1 class="header-title">🧩 Block Blast Jr.</h1>
+                <div class="game-stats">
+                    <span class="stat score-stat">Score: <span id="scoreValue">0</span></span>
+                    <span class="stat level-stat">Level: <span id="levelValue">1</span></span>
+                </div>
+                <div class="header-controls">
+                    <div class="lives-container" id="livesContainer"></div>
+                    <div class="stars-container">
+                        <span class="star-icon">⭐</span>
+                        <span id="starsValue">0</span>
+                    </div>
+                    <button id="learnModeBtn" class="learn-mode-btn">🎓 Learn Mode</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Game Area -->
+        <div class="game-main">
+            <div class="game-board-container">
+                <div id="gameBoard" class="game-board"></div>
+                <div id="educationalTip" class="educational-tip hidden">
+                    <h3>🎓 Learning Tip!</h3>
+                    <p>Try to match 5 or more blocks of the same color to earn bonus stars!</p>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <!-- Mascot Panel -->
+                <div class="mascot-panel casino-panel">
+                    <div class="mascot-character" id="mascot">🎭</div>
+                    <div class="mascot-speech" id="mascotSpeech">Let's play!</div>
+                </div>
+                
+                <!-- Power-ups Panel -->
+                <div class="powerups-panel casino-panel">
+                    <h3>⚡ Power-ups</h3>
+                    <div class="powerup-grid">
+                        <button class="powerup-btn" data-powerup="rainbow">🌈 Rainbow</button>
+                        <button class="powerup-btn" data-powerup="magnet">🧲 Magnet</button>
+                        <button class="powerup-btn" data-powerup="freeze">❄️ Freeze</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal hidden">
+        <div class="modal-content casino-modal">
+            <h2 id="gameOverTitle">Game Over!</h2>
+            <p id="gameOverMessage">Great job! You scored <span id="finalScore">0</span> points!</p>
+            <div class="modal-buttons">
+                <button id="playAgainBtn" class="casino-button">Play Again</button>
+                <button id="backToMenuBtn" class="casino-button secondary">Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Parental Dashboard Modal -->
+    <div id="parentalModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Parental Dashboard</h2>
+            <div class="parent-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Session Time:</span>
+                    <span id="sessionTime">0:00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Total Score:</span>
+                    <span id="totalScore">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Stars Earned:</span>
+                    <span id="totalStars">0</span>
+                </div>
+            </div>
+            <button id="closeParentalBtn" class="casino-button">Close</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

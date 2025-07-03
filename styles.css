@@ -1,0 +1,665 @@
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Casino Animations */
+@keyframes casino-glow {
+    0%, 100% { 
+        text-shadow: 
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 15px #ff00de,
+            0 0 20px #ff00de,
+            0 0 35px #ff00de,
+            0 0 40px #ff00de;
+    }
+    50% { 
+        text-shadow: 
+            0 0 2px #fff,
+            0 0 5px #fff,
+            0 0 8px #ff00de,
+            0 0 12px #ff00de,
+            0 0 18px #ff00de,
+            0 0 25px #ff00de;
+    }
+}
+
+@keyframes casino-pulse {
+    0% { 
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 30px rgba(255, 215, 0, 1);
+        transform: scale(1.05);
+    }
+    100% { 
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+        transform: scale(1);
+    }
+}
+
+@keyframes neon-border {
+    0%, 100% { 
+        border-color: #ff00de;
+        box-shadow: 0 0 15px #ff00de;
+    }
+    33% { 
+        border-color: #00ff00;
+        box-shadow: 0 0 15px #00ff00;
+    }
+    66% { 
+        border-color: #ffff00;
+        box-shadow: 0 0 15px #ffff00;
+    }
+}
+
+@keyframes slot-machine {
+    0% { transform: translateY(0px); }
+    25% { transform: translateY(-10px); }
+    50% { transform: translateY(0px); }
+    75% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Start Screen */
+#startScreen {
+    background: linear-gradient(45deg, #8B5CF6, #EC4899, #F59E0B);
+    justify-content: center;
+    align-items: center;
+    animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background: linear-gradient(45deg, #8B5CF6, #EC4899, #F59E0B); }
+    50% { background: linear-gradient(45deg, #EC4899, #F59E0B, #8B5CF6); }
+}
+
+.start-container {
+    text-align: center;
+    max-width: 90%;
+}
+
+.game-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+}
+
+.title-part {
+    display: inline-block;
+    margin: 0 0.5rem;
+}
+
+.casino-glow {
+    animation: casino-glow 2s ease-in-out infinite;
+}
+
+.subtitle {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    color: white;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.casino-text {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.start-button {
+    background: linear-gradient(45deg, #10B981, #059669);
+    border: 3px solid #fff;
+    color: white;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    font-weight: bold;
+    padding: clamp(12px, 3vw, 16px) clamp(24px, 6vw, 32px);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Fredoka One', cursive;
+    margin-bottom: 1rem;
+    animation: casino-pulse 2s ease-in-out infinite;
+}
+
+.start-button:hover, .start-button:active {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 1);
+}
+
+.parent-button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.parent-button:hover {
+    color: #F59E0B;
+}
+
+/* Game Header */
+.game-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: #8B5CF6;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.game-stats {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.stat {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+}
+
+.score-stat {
+    background: #F59E0B;
+    color: #78350F;
+}
+
+.level-stat {
+    background: #3B82F6;
+    color: #1E3A8A;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.lives-container {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.life-heart {
+    width: clamp(24px, 5vw, 32px);
+    height: clamp(24px, 5vw, 32px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(14px, 3vw, 18px);
+    transition: transform 0.3s ease;
+}
+
+.life-heart.active {
+    background: #EF4444;
+    color: white;
+    animation: slot-machine 0.5s ease-in-out;
+}
+
+.life-heart.inactive {
+    background: #D1D5DB;
+    color: #6B7280;
+}
+
+.stars-container {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: bold;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+}
+
+.star-icon {
+    font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+    animation: casino-glow 3s ease-in-out infinite;
+}
+
+.learn-mode-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+.learn-mode-btn.active {
+    background: #10B981;
+    color: white;
+    animation: neon-border 2s ease-in-out infinite;
+}
+
+.learn-mode-btn:not(.active) {
+    background: #D1D5DB;
+    color: #374151;
+}
+
+/* Game Main Area */
+.game-main {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.game-board-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.game-board {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: clamp(16px, 4vw, 24px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: clamp(4px, 1vw, 8px);
+    max-width: min(80vw, 500px);
+}
+
+.block {
+    width: clamp(32px, 8vw, 48px);
+    height: clamp(32px, 8vw, 48px);
+    border-radius: 12px;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(12px, 3vw, 18px);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.block:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.block:hover:before {
+    left: 100%;
+}
+
+.block.empty {
+    background: #F3F4F6;
+    border: 2px dashed #D1D5DB;
+    cursor: default;
+}
+
+.block.selected {
+    transform: scale(1.1);
+    animation: casino-pulse 0.5s ease-in-out infinite;
+    z-index: 10;
+}
+
+.block.animating {
+    animation: slot-machine 0.3s ease-in-out;
+}
+
+/* Block Colors */
+.block.red { background: linear-gradient(135deg, #EF4444, #DC2626); }
+.block.blue { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+.block.green { background: linear-gradient(135deg, #10B981, #059669); }
+.block.yellow { background: linear-gradient(135deg, #F59E0B, #D97706); }
+.block.purple { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+.block.pink { background: linear-gradient(135deg, #EC4899, #DB2777); }
+.block.orange { background: linear-gradient(135deg, #F97316, #EA580C); }
+.block.cyan { background: linear-gradient(135deg, #06B6D4, #0891B2); }
+
+.educational-tip {
+    background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+    border: 2px solid #10B981;
+    border-radius: 15px;
+    padding: 1rem;
+    max-width: 400px;
+    text-align: center;
+    animation: neon-border 3s ease-in-out infinite;
+}
+
+.educational-tip.hidden {
+    display: none;
+}
+
+.educational-tip h3 {
+    color: #065F46;
+    margin-bottom: 0.5rem;
+    font-family: 'Fredoka One', cursive;
+}
+
+.educational-tip p {
+    color: #047857;
+    font-size: 0.9rem;
+}
+
+/* Sidebar */
+.sidebar {
+    width: clamp(250px, 25vw, 320px);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.casino-panel {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border: 2px solid transparent;
+    animation: neon-border 4s ease-in-out infinite;
+}
+
+.mascot-panel {
+    text-align: center;
+}
+
+.mascot-character {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    animation: slot-machine 2s ease-in-out infinite;
+}
+
+.mascot-speech {
+    background: #F3F4F6;
+    border-radius: 10px;
+    padding: 0.75rem;
+    font-weight: bold;
+    color: #374151;
+    border: 2px solid #D1D5DB;
+}
+
+.powerups-panel h3 {
+    text-align: center;
+    color: #8B5CF6;
+    margin-bottom: 1rem;
+    font-family: 'Fredoka One', cursive;
+}
+
+.powerup-grid {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.powerup-btn {
+    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Comic Neue', cursive;
+}
+
+.powerup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+}
+
+.powerup-btn:active {
+    animation: casino-pulse 0.3s ease-in-out;
+}
+
+/* Modals */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.casino-modal {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: 3px solid #FFD700;
+    animation: neon-border 2s ease-in-out infinite;
+}
+
+.casino-modal h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.casino-button {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    color: #8B4513;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+}
+
+.casino-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+.casino-button.secondary {
+    background: linear-gradient(45deg, #6B7280, #4B5563);
+    color: white;
+}
+
+.parent-stats {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: #F9FAFB;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+}
+
+.stat-label {
+    font-weight: bold;
+    color: #374151;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .game-main {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+    
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 0.5rem;
+    }
+    
+    .casino-panel {
+        flex-shrink: 0;
+        min-width: 200px;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .game-stats {
+        order: 1;
+    }
+    
+    .header-controls {
+        order: 2;
+        justify-content: center;
+    }
+    
+    .modal-content {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-board {
+        gap: 2px;
+        padding: 12px;
+    }
+    
+    .block {
+        border-radius: 8px;
+        border-width: 1px;
+    }
+    
+    .sidebar {
+        flex-direction: column;
+    }
+    
+    .casino-panel {
+        min-width: auto;
+    }
+}
+
+/* Touch Interactions */
+@media (hover: none) and (pointer: coarse) {
+    .block:hover:before {
+        left: -100%;
+    }
+    
+    .block:active:before {
+        left: 100%;
+    }
+    
+    .start-button:hover {
+        transform: none;
+    }
+    
+    .start-button:active {
+        transform: scale(1.1);
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .block {
+        border-width: 3px;
+        border-color: #000;
+    }
+    
+    .casino-panel {
+        border-color: #000;
+        border-width: 2px;
+    }
+}
