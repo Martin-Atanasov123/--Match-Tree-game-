@@ -526,7 +526,7 @@ const uiManager = new UIManager(gameState, SoundManager);
 
 // Initialize the game when the page loads
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎮 Block Blast Jr. loaded!');
+    console.log('🧩Match three✨🎮  loaded!');
     
     // Add touch event optimizations
     document.addEventListener('touchstart', function() {}, {passive: true});
