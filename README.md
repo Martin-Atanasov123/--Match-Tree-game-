@@ -3,7 +3,7 @@
 # 🎮 Matching Game
 
 Welcome to the **Matching Game**!  
-Test your memory skills by matching pairs of cards (just two at a time!)  
+Test your  skills by matching pairs of blocks .  
 Built with **JavaScript**, **CSS**, and **HTML**.
 
 ---
@@ -31,11 +31,7 @@ Built with **JavaScript**, **CSS**, and **HTML**.
 
 ## ▶️ How to Play
 
-1. Click any card to flip it.
-2. Flip another card to find a matching pair.
-3. If the cards match, they stay revealed.
-4. If not, they flip back over.
-5. Match all pairs to win! 🏆
+Click on block that are near to each other and whey are same color.
 
 _No need to match three—just two blocks at a time!_
 
